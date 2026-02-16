@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/paneNews"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- ========== トップバー（戻るボタン）========== -->
+    <LinearLayout
+        android:id="@+id/layoutNewsTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="8dp"
+        android:background="@color/card_background"
+        android:elevation="4dp">
+
+        <!-- 戻るボタン（シングルペイン時のみ表示） -->
+        <ImageButton
+            android:id="@+id/btnBackToMain"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="戻る"
+            android:padding="8dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="マーケット情報"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginStart="8dp"/>
+
+    </LinearLayout>
+
+    <!-- ========== 経済ニュースセクション（55%） ========== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="55"
+        android:orientation="vertical">
+
+        <!-- ヘッダー（改善版） -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="16dp"
+            android:background="@color/card_background">
+
+            <!-- アイコン + テキスト -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📰 経済ニュース"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Google News"
+                    android:textSize="10sp"
+                    android:textColor="@color/text_hint"
+                    android:layout_marginTop="1dp"/>
+
+            </LinearLayout>
+
+            <!-- 更新ボタン（改善版） -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRefreshNews"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:minWidth="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingHorizontal="10dp"
+                app:icon="@drawable/ic_refresh"
+                app:iconSize="16dp"
+                app:iconTint="@color/accent_primary"
+                app:iconGravity="textStart"
+                app:iconPadding="4dp"
+                android:text="更新"
+                android:textSize="11sp"
+                android:textColor="@color/accent_primary"
+                app:rippleColor="@color/accent_primary"
+                app:backgroundTint="@android:color/transparent"/>
+
+        </LinearLayout>
+
+        <!-- 区切り線 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"/>
+
+        <!-- ニュースリスト -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvEconomicNews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="4dp"/>
+
+    </LinearLayout>
+
+    <!-- 区切り線（太め） -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/divider"/>
+
+    <!-- ========== 適時開示速報セクション（45%） ========== -->
+    <LinearLayout
+        android:id="@+id/layoutDisclosureSection"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="45"
+        android:orientation="vertical">
+
+        <!-- ヘッダー（タップで折りたたみ切り替え）（改善版） -->
+        <LinearLayout
+            android:id="@+id/layoutDisclosureHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="16dp"
+            android:background="@color/card_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+
+            <!-- トグルアイコン -->
+            <ImageView
+                android:id="@+id/ivDisclosureToggle"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_expand_less"
+                android:layout_marginEnd="6dp"/>
+
+            <!-- アイコン + テキスト -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📋 適時開示速報"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="株探ニュース"
+                    android:textSize="10sp"
+                    android:textColor="@color/text_hint"
+                    android:layout_marginTop="1dp"/>
+
+            </LinearLayout>
+
+            <!-- 更新ボタン（改善版） -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRefreshDisclosure"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:minWidth="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingHorizontal="10dp"
+                app:icon="@drawable/ic_refresh"
+                app:iconSize="16dp"
+                app:iconTint="@color/accent_primary"
+                app:iconGravity="textStart"
+                app:iconPadding="4dp"
+                android:text="更新"
+                android:textSize="11sp"
+                android:textColor="@color/accent_primary"
+                app:rippleColor="@color/accent_primary"
+                app:backgroundTint="@android:color/transparent"/>
+
+        </LinearLayout>
+
+        <!-- 区切り線 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"/>
+
+        <!-- 適時開示リスト（折りたたみ対象） -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTimelyDisclosure"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="4dp"
+            android:visibility="visible"/>
+
+        <!-- 折りたたみ時のプレースホルダー -->
+        <TextView
+            android:id="@+id/tvDisclosureCollapsed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="▼ タップで展開"
+            android:textSize="12sp"
+            android:textColor="@color/text_hint"
+            android:gravity="center"
+            android:padding="10dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</LinearLayout>

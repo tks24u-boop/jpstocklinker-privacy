@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JpStockLinker</string>
+    <string name="widget_description">お気に入り銘柄をホーム画面に表示</string>
+</resources>

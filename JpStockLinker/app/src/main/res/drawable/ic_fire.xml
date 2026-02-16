@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material Symbols Rounded: local_fire_department -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960"
+    android:tint="?attr/colorControlNormal">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M240,840q-50,-56 -75,-124T140,580q0,-79 29,-151.5T256,304l224,-214 56,56 -178,170q-28,27 -43,63t-15,77q0,42 16.5,78t44.5,63q6,-36 20.5,-68.5T422,468l138,-132 56,56 -120,114q-26,25 -40,56.5T442,624q0,45 17.5,84.5T508,780q32,-20 52.5,-52.5T582,660l18,-80 128,74q22,13 37,34.5t15,47.5q0,42 -29.5,71.5T680,836q-29,0 -54.5,-10T580,800q-54,40 -117,60t-131,20q-26,0 -51,-5t-49,-15l8,-20ZM480,594Z"/>
+</vector>

@@ -1,0 +1,23 @@
+# IDE
+.idea/
+.cursor/
+*.iml
+
+# ローカル設定・機密
+local.properties
+**/keystore.properties
+
+# Gradle配布（通常はwrapperでDLするため除外）
+**/gradle-8.2/
+
+# ビルド成果物
+**/build/
+**/.gradle/
+**/app/release/
+**/app/build/
+**/.gradle/
+
+# その他
+.DS_Store
+Thumbs.db
+*.log

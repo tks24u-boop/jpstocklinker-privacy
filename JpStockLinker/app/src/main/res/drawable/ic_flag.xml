@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material Symbols Rounded: flag -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960"
+    android:tint="?attr/colorControlNormal">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M200,840v-680h334l18,80h208v360L544,600l-18,-80L280,520v320h-80ZM544,520h136v-200L522,320l-18,-80L280,240v200h246l18,80Z"/>
+</vector>

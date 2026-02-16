@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="銘柄コード（4桁）"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"/>
+
+    <EditText
+        android:id="@+id/etDialogCode"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:hint="例: 7203"
+        android:textSize="16sp"
+        android:inputType="number"
+        android:maxLength="4"
+        android:paddingHorizontal="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="銘柄名"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"/>
+
+    <EditText
+        android:id="@+id/etDialogName"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:hint="例: トヨタ自動車"
+        android:textSize="16sp"
+        android:inputType="text"
+        android:paddingHorizontal="16dp"/>
+
+</LinearLayout>

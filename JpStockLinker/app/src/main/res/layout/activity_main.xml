@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.slidingpanelayout.widget.SlidingPaneLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/slidingPaneLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ========== 左ペイン：既存のメイン画面 ========== -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/paneMain"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/background"
+        android:padding="16dp">
+
+    <!-- ヘッダー部分 -->
+    <TextView
+        android:id="@+id/tvAppTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="📊 JpStockLinker"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.02"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="v7.3.1"
+        android:textSize="12sp"
+        android:textColor="@color/text_hint"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="@id/tvAppTitle"
+        app:layout_constraintBottom_toBottomOf="@id/tvAppTitle"
+        app:layout_constraintStart_toEndOf="@id/tvAppTitle"/>
+
+    <!-- トグルボタン（リンク表示切替） -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnToggleHeader"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🔽 リンクを表示"
+        android:textSize="13sp"
+        android:textColor="@color/accent_primary"
+        android:minWidth="0dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/tvAppTitle"
+        app:layout_constraintBottom_toBottomOf="@id/tvAppTitle"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- 検索エリア（常時表示） -->
+    <LinearLayout
+        android:id="@+id/layoutSearchArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvAppTitle">
+
+    <!-- 検索カード - モダンなデザイン -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="4dp"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="@color/card_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- 検索アイコン付きヘッダー（非表示） -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="gone"
+                android:layout_marginBottom="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔍 銘柄を検索"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="sans-serif-medium"/>
+            </LinearLayout>
+
+            <!-- 検索入力フィールド - アイコン付き -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutSearchInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:paddingStart="16dp"
+                android:paddingEnd="10dp"
+                android:minHeight="64dp">
+
+                <ImageView
+                    android:id="@+id/etSearchIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_menu_search"
+                    android:tint="@color/accent_primary"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <EditText
+                    android:id="@+id/etSearchInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="コード・社名・テーマで検索"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="16sp"
+                    android:inputType="text"
+                    android:imeOptions="actionSearch"
+                    android:maxLines="1"
+                    android:fontFamily="sans-serif"
+                    android:paddingVertical="16dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintStart_toEndOf="@id/etSearchIcon"
+                    app:layout_constraintEnd_toStartOf="@id/btnSave"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSave"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:minWidth="0dp"
+                    android:text=""
+                    android:insetLeft="0dp"
+                    android:insetRight="0dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:padding="0dp"
+                    app:icon="@drawable/ic_add"
+                    app:iconTint="@color/white"
+                    app:iconSize="24dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:backgroundTint="@color/accent_primary"
+                    app:cornerRadius="22dp"
+                    app:elevation="4dp"
+                    android:contentDescription="銘柄を追加"
+                    android:layout_marginEnd="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- サジェストリスト -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSuggest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@color/card_background"
+        android:visibility="gone"
+        android:elevation="8dp"
+        android:maxHeight="200dp"/>
+
+    <!-- 選択中銘柄の表示 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSelected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:strokeWidth="2.5dp"
+        app:strokeColor="@color/accent_primary"
+        app:cardBackgroundColor="@color/card_background_elevated">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvSelectedCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/accent_primary"/>
+
+            <TextView
+                    android:id="@+id/tvSelectedName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                android:maxLines="2"
+                    android:ellipsize="end"/>
+
+                <ImageButton
+                    android:id="@+id/btnClearSelected"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="選択解除"/>
+            </LinearLayout>
+
+            <!-- タグ表示エリア -->
+            <LinearLayout
+                android:id="@+id/layoutTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- ========== リンクドック（折りたたみ可能） ========== -->
+    <LinearLayout
+        android:id="@+id/layoutHeaderControls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_link_dock"
+        android:elevation="10dp"
+        android:padding="12dp"
+        android:layout_margin="12dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    <!-- ドックハンドル -->
+    <View
+        android:layout_width="36dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/divider"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="リンクドック"
+        android:textSize="12sp"
+        android:textColor="@color/text_secondary"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/linkDockScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/layoutLinkDockContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <!-- ========== 個別銘柄リンク ラベル ========== -->
+    <TextView
+        android:id="@+id/tvLinkSectionStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="📊 銘柄情報"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- リンクボタン群（個別銘柄用・11個）- グリッド表示 -->
+    <GridLayout
+        android:id="@+id/scrollButtonsStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:alignmentMode="alignMargins"
+        android:useDefaultMargins="true"
+        android:columnCount="3">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnYahoo"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="Yahoo!"
+                android:textSize="13sp"
+                android:textColor="@color/btn_yahoo"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_yahoo"
+                app:strokeWidth="2dp"
+                app:rippleColor="@color/btn_yahoo"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKabutan"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="株探"
+                android:textSize="13sp"
+                android:textColor="@color/btn_kabutan"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_kabutan"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_kabutan"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTradingView"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:text="TradingView"
+                android:textSize="12sp"
+                android:textColor="@color/btn_tradingview"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_tradingview"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_tradingview"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMinkabu"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="みんかぶ"
+                android:textSize="13sp"
+                android:textColor="@color/btn_minkabu"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_minkabu"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_minkabu"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNikkei"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="日経"
+                android:textSize="13sp"
+                android:textColor="@color/btn_nikkei"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_nikkei"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_nikkei"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBuffett"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="バフェット"
+                android:textSize="13sp"
+                android:textColor="@color/btn_buffett"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_buffett"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_buffett"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnIrbank"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="IR BANK"
+                android:textSize="13sp"
+                android:textColor="@color/btn_irbank"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_irbank"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_irbank"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKabudragon"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="株ドラゴン"
+                android:textSize="13sp"
+                android:textColor="@color/btn_kabudragon"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_kabudragon"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_kabudragon"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAshiato"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="機関足跡"
+                android:textSize="13sp"
+                android:textColor="@color/btn_ashiato"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_ashiato"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_ashiato"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKarauri"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="空売り"
+                android:textSize="13sp"
+                android:textColor="@color/btn_karauri"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_karauri"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_karauri"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShikiho"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="四季報"
+                android:textSize="13sp"
+                android:textColor="@color/btn_shikiho"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_shikiho"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_shikiho"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNisshokin"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="日証金"
+                android:textSize="13sp"
+                android:textColor="@color/btn_nisshokin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_nisshokin"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_nisshokin"
+                app:cornerRadius="16dp"/>
+
+    </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutMarketSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- ========== 市場全体リンク ラベル ========== -->
+        <TextView
+            android:id="@+id/tvLinkSectionMarket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🌍 市場全体"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="4dp"/>
+
+        <!-- ========== 市場全体リンク ボタン群 - グリッド表示 ========== -->
+        <GridLayout
+            android:id="@+id/layoutMarketButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:alignmentMode="alignMargins"
+            android:useDefaultMargins="true"
+            android:columnCount="2">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWorldStock"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="世界の株価"
+                android:textSize="14sp"
+                android:textColor="@color/btn_world"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_world"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_world"
+                app:cornerRadius="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNikkei225"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="日経先物"
+                android:textSize="14sp"
+                android:textColor="@color/btn_nikkei225"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_nikkei225"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_nikkei225"
+                app:cornerRadius="16dp"/>
+
+            <!-- 上昇率（左） -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKabutanUp"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="上昇率"
+                android:textSize="14sp"
+                android:textColor="@color/accent_success"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/accent_success"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/accent_success"
+                app:cornerRadius="16dp"/>
+
+            <!-- 決算カレンダー（右） -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKabuyoho"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="決算カレンダー"
+                android:textSize="14sp"
+                android:textColor="@color/btn_kabuyoho"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/btn_kabuyoho"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/btn_kabuyoho"
+                app:cornerRadius="16dp"/>
+
+            <!-- 下落率（左） -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKabutanDown"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="下落率"
+                android:textSize="14sp"
+                android:textColor="@color/accent_error"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/accent_error"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/accent_error"
+                app:cornerRadius="16dp"/>
+
+            <!-- ヒートマップ（右） -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHeatmap"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill_horizontal"
+                android:minWidth="0dp"
+                android:text="ヒートマップ"
+                android:textSize="14sp"
+                android:textColor="@color/accent_secondary"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:strokeColor="@color/accent_secondary"
+                app:strokeWidth="1.5dp"
+                app:rippleColor="@color/accent_secondary"
+                app:cornerRadius="16dp"/>
+        </GridLayout>
+    </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+    <!-- ========== ヘッダーコントロールここまで ========== -->
+
+    <!-- グループタブ -->
+    <HorizontalScrollView
+        android:id="@+id/scrollGroups"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:scrollbars="none"
+        android:fadingEdge="horizontal"
+        android:fadingEdgeLength="16dp"
+        android:requiresFadingEdge="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/layoutSearchArea">
+
+        <LinearLayout
+            android:id="@+id/layoutGroupTabs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="4dp">
+
+            <!-- 「すべて」タブ（固定） -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAll"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="すべて"
+                android:textSize="14sp"
+                android:checkable="true"
+                android:checked="true"
+                app:chipBackgroundColor="@color/chip_selector"
+                app:chipStrokeColor="@color/accent_primary"
+                app:chipStrokeWidth="1dp"
+                app:chipCornerRadius="20dp"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- 動的に追加されるグループタブ用のコンテナ -->
+            <LinearLayout
+                android:id="@+id/layoutDynamicGroups"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"/>
+
+            <!-- 「+」ボタン（固定） -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAddGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:text="＋"
+                android:textSize="20sp"
+                app:chipBackgroundColor="@color/surface"
+                app:chipStrokeColor="@color/divider"
+                app:chipStrokeWidth="1.5dp"
+                app:chipCornerRadius="22dp"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- リストヘッダー -->
+    <LinearLayout
+        android:id="@+id/layoutListHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
+        app:layout_constraintTop_toBottomOf="@id/scrollGroups">
+
+        <TextView
+            android:id="@+id/tvListHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="📋 マイリスト"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0件"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"/>
+    </LinearLayout>
+
+    <!-- 銘柄リスト (GridLayoutManager対応) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutListHeader"
+        app:layout_constraintBottom_toTopOf="@id/layoutHeaderControls"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 左ペイン終了 -->
+
+    <!-- ========== 右ペイン：ニュース＆速報 ========== -->
+    <include
+        android:id="@+id/includeNews"
+        layout="@layout/pane_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+</androidx.slidingpanelayout.widget.SlidingPaneLayout>

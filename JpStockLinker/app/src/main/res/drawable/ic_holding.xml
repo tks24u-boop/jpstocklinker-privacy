@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material Symbols Rounded: account_balance_wallet -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960"
+    android:tint="?attr/colorControlNormal">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M240,800q-33,0 -56.5,-23.5T160,720v-480q0,-33 23.5,-56.5T240,160h480q33,0 56.5,23.5T800,240v80h-80v-80L240,240v480h480v-80h80v80q0,33 -23.5,56.5T720,800L240,800ZM560,640q-33,0 -56.5,-23.5T480,560v-160q0,-33 23.5,-56.5T560,320h200q33,0 56.5,23.5T840,400v160q0,33 -23.5,56.5T760,640L560,640ZM600,560h120q17,0 28.5,-11.5T760,520v-80q0,-17 -11.5,-28.5T720,400L600,400q-17,0 -28.5,11.5T560,440v80q0,17 11.5,28.5T600,560Z"/>
+</vector>

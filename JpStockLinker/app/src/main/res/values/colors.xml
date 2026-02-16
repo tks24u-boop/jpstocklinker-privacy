@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background_gray">#F2F2F7</color>
+    
+    <!-- ベースカラー（クールダーク） -->
+    <color name="background">#0B0F14</color>
+    <color name="card_background">#121821</color>
+    <color name="card_background_elevated">#16202A</color>
+    <color name="surface">#11171F</color>
+    <color name="surface_variant">#1A2430</color>
+    
+    <!-- Primary Colors - クールネオン系 -->
+    <color name="primary">#00C2D1</color>
+    <color name="primary_dark">#0096A7</color>
+    <color name="primary_light">#D9FBFF</color>
+    <color name="accent">#00E5FF</color>
+    
+    <!-- テキストカラー -->
+    <color name="text_primary">#E6F0F2</color>
+    <color name="text_secondary">#9FB0C4</color>
+    <color name="text_hint">#6F8092</color>
+    <color name="text_disabled">#4D5C6B</color>
+    
+    <!-- System Bar Colors -->
+    <color name="status_bar">#0B0F14</color>
+    <color name="nav_bar">#0B0F14</color>
+    
+    <!-- アクセントカラー -->
+    <color name="accent_primary">#00C2D1</color>
+    <color name="accent_secondary">#00E5FF</color>
+    <color name="accent_warning">#FFC857</color>
+    <color name="accent_error">#FF5C7A</color>
+    <color name="accent_success">#22C55E</color>
+    
+    <!-- 分割線 -->
+    <color name="divider">#1F2A36</color>
+    
+    <!-- 既存リンクボタン用カラー -->
+    <color name="btn_yahoo">#FF0033</color>
+    <color name="btn_yahoo_dark">#CC0029</color>
+    <color name="btn_kabutan">#F9A825</color>
+    <color name="btn_kabutan_dark">#C68400</color>
+    <color name="btn_shikiho">#5C6BC0</color>
+    <color name="btn_shikiho_dark">#3949AB</color>
+    <color name="btn_ashiato">#43A047</color>
+    <color name="btn_ashiato_dark">#2E7D32</color>
+    <color name="btn_karauri">#AB47BC</color>
+    <color name="btn_karauri_dark">#7B1FA2</color>
+    
+    <!-- 追加リンクボタン用カラー（v5.4） -->
+    <color name="btn_tradingview">#5CC8FF</color>
+    <color name="btn_tradingview_dark">#0039CB</color>
+    <color name="btn_minkabu">#00897B</color>
+    <color name="btn_minkabu_dark">#005B4F</color>
+    <color name="btn_buffett">#1565C0</color>
+    <color name="btn_buffett_dark">#003C8F</color>
+    <color name="btn_nikkei">#8AB4F8</color>
+    <color name="btn_nikkei_dark">#102027</color>
+    <color name="btn_kabudragon">#D32F2F</color>
+    <color name="btn_kabudragon_dark">#9A0007</color>
+    <color name="btn_irbank">#7B1FA2</color>
+    <color name="btn_irbank_dark">#4A0072</color>
+    <color name="btn_tdnet">#455A64</color>
+    <color name="btn_tdnet_dark">#1C313A</color>
+    
+    <!-- Memo Colors -->
+    <color name="memo_background">#0E1A1F</color>
+    <color name="memo_text">#CFE7EE</color>
+    
+    <!-- Code Badge -->
+    <color name="code_badge_bg">#0E2A3A</color>
+    <color name="code_badge_text">#6EE7F2</color>
+    <color name="code_badge_bg_gradient_start">#0E2A3A</color>
+    <color name="code_badge_bg_gradient_end">#123447</color>
+    
+    <!-- Input Field -->
+    <color name="input_bg">#0F1620</color>
+    <color name="input_stroke">#2A3A4A</color>
+    <color name="input_stroke_focused">#00C2D1</color>
+    
+    <!-- 選択状態 -->
+    <color name="selected_background">#123447</color>
+    <color name="selected_border">#00C2D1</color>
+    <color name="selected_background_alpha">#3312A3B5</color>
+    <color name="ripple_color">#33FFFFFF</color>
+    
+    <!-- Tag Colors -->
+    <color name="tag_sector_bg">#0E2A3A</color>
+    <color name="tag_sector_text">#7ED9E5</color>
+    <color name="tag_theme_bg">#2A1F12</color>
+    <color name="tag_theme_text">#FFC857</color>
+    
+    <!-- お気に入り星 -->
+    <color name="star_active">#FFD166</color>
+    <color name="star_inactive">#4D5C6B</color>
+    
+    <!-- チップ用カラー -->
+    <color name="chip_selected">#00C2D1</color>
+    <color name="chip_unselected">#1A2430</color>
+    
+    <!-- 市場全体ボタン用カラー（v6.1） -->
+    <color name="btn_world">#2E7D32</color>
+    <color name="btn_nikkei225">#8AB4F8</color>
+    
+    <!-- 追加リンクボタン用カラー（v7.2） -->
+    <color name="btn_kabuyoho">#9C27B0</color>
+    <color name="btn_nisshokin">#009688</color>
+</resources>

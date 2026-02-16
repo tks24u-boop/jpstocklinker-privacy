@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="8dp">
+
+    <!-- 検索バー（ウィジェット上部） -->
+    <RelativeLayout
+        android:id="@+id/widget_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_widget_pill"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/widget_search_icon"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_search"
+            android:tint="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/widget_search_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/widget_search_icon"
+            android:layout_marginStart="8dp"
+            android:text="銘柄を検索"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"/>
+
+        <ImageView
+            android:id="@+id/widget_search_trend"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_chart"
+            android:tint="@android:color/darker_gray"/>
+    </RelativeLayout>
+
+    <!-- クイックリンク 1行目（選択銘柄リンク） -->
+    <LinearLayout
+        android:id="@+id/widget_quick_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/widget_quick_yahoo"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_widget_circle"
+            android:gravity="center"
+            android:text="Yahoo!"
+            android:textSize="11sp"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:id="@+id/widget_quick_kabutan"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_widget_circle"
+            android:gravity="center"
+            android:text="株探"
+            android:textSize="11sp"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:id="@+id/widget_quick_twitter"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_widget_circle"
+            android:gravity="center"
+            android:text="X検索"
+            android:textSize="11sp"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:id="@+id/widget_quick_chart"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_widget_circle"
+            android:gravity="center"
+            android:text="TradingView"
+            android:textSize="10sp"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+    <!-- クイックリンク 2行目（固定リンク） -->
+    <LinearLayout
+        android:id="@+id/widget_quick_row2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:id="@+id/widget_quick_calendar"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_widget_circle_light"
+            android:gravity="center"
+            android:text="決算"
+            android:textSize="11sp"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:id="@+id/widget_quick_contribution"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_widget_circle_light"
+            android:gravity="center"
+            android:text="寄与度"
+            android:textSize="10sp"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:id="@+id/widget_quick_heatmap"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_widget_circle_light"
+            android:gravity="center"
+            android:text="ヒートマップ"
+            android:textSize="9sp"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:id="@+id/widget_quick_nikkei225"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_widget_circle_light"
+            android:gravity="center"
+            android:text="日経先物"
+            android:textSize="10sp"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+    <!-- タイトル＋更新 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/widget_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="お気に入り銘柄"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <ImageButton
+            android:id="@+id/widget_refresh"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_refresh"
+            android:background="@android:color/transparent"
+            android:contentDescription="更新"
+            android:padding="4dp"/>
+    </LinearLayout>
+
+    <!-- 空の状態 -->
+    <TextView
+        android:id="@+id/widget_empty_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="お気に入り銘柄がありません"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="center"
+        android:padding="16dp"
+        android:visibility="gone"/>
+
+    <!-- リストビュー -->
+    <ListView
+        android:id="@+id/widget_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="6dp"
+        android:scrollbars="vertical"
+        android:visibility="gone"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:clipToPadding="false"
+        tools:visibility="visible" />
+
+</LinearLayout>

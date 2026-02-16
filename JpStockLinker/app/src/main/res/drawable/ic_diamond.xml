@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material Symbols Rounded: diamond -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960"
+    android:tint="?attr/colorControlNormal">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M480,880L80,440l120,-280h560l120,280 -400,440ZM398,400h164l-82,-180 -82,180ZM440,700v-220L236,400l204,300ZM520,700l204,-300 -204,-80v380ZM630,400h134l-68,-160 -66,160ZM196,400h134l66,-160L330,240 196,400Z"/>
+</vector>

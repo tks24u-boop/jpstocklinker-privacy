@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.JpStockLinker" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Material Design 3 Color Scheme -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/primary_light</item>
+        <item name="colorOnPrimaryContainer">@color/primary_dark</item>
+        
+        <item name="colorSecondary">@color/accent_secondary</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/surface_variant</item>
+        <item name="colorOnSecondaryContainer">@color/text_primary</item>
+        
+        <item name="colorTertiary">@color/accent</item>
+        <item name="colorOnTertiary">@color/white</item>
+        
+        <item name="colorError">@color/accent_error</item>
+        <item name="colorOnError">@color/white</item>
+        
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        
+        <item name="colorOutline">@color/divider</item>
+        <item name="colorOutlineVariant">@color/input_stroke</item>
+        
+        <!-- System Bar Colors -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        
+        <!-- Material Design 3 Typography -->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Material3.HeadlineLarge</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Material3.HeadlineMedium</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Material3.BodyLarge</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Material3.BodyMedium</item>
+    </style>
+</resources>

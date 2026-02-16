@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material Symbols Rounded: grid_view -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960"
+    android:tint="?attr/colorControlNormal">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M120,440v-320h320v320L120,440ZM120,880v-320h320v320L120,880ZM520,440v-320h320v320L520,440ZM520,880v-320h320v320L520,880ZM200,360h160v-160L200,200v160ZM600,360h160v-160L600,200v160ZM600,800h160v-160L600,640v160ZM200,800h160v-160L200,640v160ZM600,360ZM600,640ZM200,640ZM200,360Z"/>
+</vector>
